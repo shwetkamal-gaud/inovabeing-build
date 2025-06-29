@@ -80,8 +80,7 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
                 setIsReset(true)
                 setOtpRequested(false)
                 setIsForgot(false)
-                setEmail('')
-                setPassword('')
+                
             }
         } else {
             toast.error(data?.error || "Invalid OTP")
@@ -109,6 +108,8 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
         if (res.ok) {
             setIsForgot(false)
             setIsReset(false)
+            setEmail('')
+            setPassword('')
         }
     }
     const handleLoginOrSignup = async () => {

@@ -22,7 +22,7 @@ const TaskCard = ({ _id, title, status, createdAt, setTask, setShowForm, setShow
                     <p className="text-xs text-gray-400">{createdAt}</p>
                 </div>
                 <div
-                    className={`px-3 py-1 text-sm rounded-xl ${status === 'done' ? 'bg-green-400 text-white' : 'bg-gray-400/20 text-gray-800'
+                    className={`px-3 py-1 text-sm rounded-xl ${status === 'done' ? 'bg-green-400 text-white' : 'bg-gray-400/20 text-gray-800 dark:text-white'
                         }`}
                 >
                     {status}
