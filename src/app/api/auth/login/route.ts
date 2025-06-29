@@ -3,9 +3,9 @@ import { User } from '@/models/User'
 import { generateTokenAndSetCookie } from '@/utils/generateToken'
 import bcrypt from 'bcryptjs'
 
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     const { email, password } = await req.json()
     await connectDB()
 

@@ -1,10 +1,10 @@
 import { connectDB } from '@/config/db'
 import {User} from '@/models/User'
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 import { deleteOtp, verifyOtp } from '@/utils/otpStore'
 import { generateTokenAndSetCookie } from '@/utils/generateToken'
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     const { email, otp, isForgot } = await req.json()
     await connectDB()
 

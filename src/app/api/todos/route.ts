@@ -1,7 +1,7 @@
 import { connectDB } from "@/config/db";
 import { Todo } from "@/models/Todo";
 import { getCurrentUser } from "@/utils/auth";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 export async function GET() {
     const user = await getCurrentUser();
@@ -15,7 +15,7 @@ export async function GET() {
     return NextResponse.json(todos);
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
 
     const { title, status } = await req.json();
     const user = await getCurrentUser();
