@@ -3,7 +3,6 @@ import { User } from '@/models/User'
 import { generateOtp } from '@/utils/generateOtp'
 import { sendOtpEmail } from '@/utils/mailer'
 import { setOtp } from '@/utils/otpStore'
-import bcrypt from 'bcryptjs'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
