@@ -11,15 +11,20 @@ export async function GET() {
     }
     await connectDB();
 
-    const todos = await Todo.find();
+    const todos = await Todo.find({ user: user.userId });
     return NextResponse.json(todos);
 }
 
 export async function POST(req: Request) {
 
-    const { title } = await req.json();
-    
+    const { title, status } = await req.json();
+    const user = await getCurrentUser();
+
+    if (!user) {
+        return new Response(JSON.stringify({ message: 'Unauthorized' }), { status: 401 });
+    }
     await connectDB();
-    const todo = await Todo.create({ title });
+    console.log(user)
+    const todo = await Todo.create({ title, status, user: user.userId });
     return NextResponse.json(todo);
 }

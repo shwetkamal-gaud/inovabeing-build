@@ -53,7 +53,7 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
     const handleOtpPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
         e.preventDefault();
         const pasteData = e.clipboardData.getData("text").trim();
-        if (/^\d{8}$/.test(pasteData)) {
+        if (/^\d{4}$/.test(pasteData)) {
             const newOtp = pasteData.split("");
             setOtp(newOtp);
             document.getElementById(`otp-${newOtp.length - 1}`)?.focus();
@@ -80,6 +80,8 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
                 setIsReset(true)
                 setOtpRequested(false)
                 setIsForgot(false)
+                setEmail('')
+                setPassword('')
             }
         } else {
             toast.error(data?.error || "Invalid OTP")
@@ -146,7 +148,7 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
         return `${maskedName}@${domain}`;
     };
     return (
-        <div className="flex flex-grow items-center justify-center">
+        <div className="flex flex-grow w-full items-center justify-center">
             <GlassCard>
                 {!otpRequested ?
                     <>
@@ -196,9 +198,9 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
                             <button
                                 type="button"
                                 onClick={isForgot ? handleSendOtp : isReset ? handleReset : handleLoginOrSignup}
-                                className="bg-[#FEC1C5] dark:bg-[#310320]  text-white px-4 py-2 rounded w-full"
+                                className="bg-[#eeb2b6] dark:bg-[#310320]  text-white px-4 py-2 rounded w-full"
                             >
-                                {type === "login" ? isForgot ? "Send Otp" : "Login" : "Create Account"} <ArrowRight size={18} className="inline ml-1" />
+                                {type === "login" ? isForgot ? "Send Otp" : isReset? "Reset Password": "Login" : "Create Account"} <ArrowRight size={18} className="inline ml-1" />
                             </button>
 
                         </form>
@@ -221,7 +223,7 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
                             Verify your email
                         </motion.h2>
                         <p className="text-gray-600 dark:text-white/70 text-[16px] mb-4 text-center">
-                            Enter the 8 digit code you have received on{" "}
+                            Enter the 4 digit code you have received on{" "}
                             {maskEmail(email)}
                         </p>
 
@@ -233,7 +235,7 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
                                     id={`otp-${index}`}
                                     type="text"
                                     maxLength={1}
-                                    className="w-12 h-12 text-center  text-xl border border-[#FEC1C5] dark:border-white rounded"
+                                    className="w-12 h-12 text-center text-black dark:text-white  text-xl border border-[#eeb2b6] dark:border-white rounded"
                                     value={digit}
                                     onChange={(e) => handleOtpChange(index, e.target.value)}
                                     onKeyDown={(e) => handleOtpKeyDown(index, e)}
@@ -246,7 +248,7 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
                         <button
                             type="button"
                             onClick={handleVerifyOTP}
-                            className="bg-[#FEC1C5] dark:bg-white dark:text-black text-white mt-3 px-4 py-2 rounded w-full"
+                            className="bg-[#eeb2b6] dark:bg-[#310320]  text-black dark:text-white mt-3 px-4 py-2 rounded w-full"
                         >
                             Verify
                         </button>

@@ -4,14 +4,14 @@ import { getCurrentUser } from "@/utils/auth";
 import { NextResponse } from "next/server";
 
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
-    const { title, completed } = await req.json();
+    const { title, status } = await req.json();
     const user = await getCurrentUser();
 
     if (!user) {
         return new Response(JSON.stringify({ message: 'Unauthorized' }), { status: 401 });
     }
     await connectDB();
-    const updated = await Todo.findByIdAndUpdate(params.id, { title, completed }, { new: true });
+    const updated = await Todo.findByIdAndUpdate(params.id, { title, status }, { new: true });
     return NextResponse.json(updated);
 }
 

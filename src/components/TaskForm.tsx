@@ -46,12 +46,12 @@ const TaskForm = ({ isOpen, onClose, onSubmit, initialData }: TaskFormProps) => 
                         <option value="done">Done</option>
                     </select>
                     <div className="flex justify-end gap-2">
-                        <button onClick={onClose} className="px-4 py-2 dark:bg-[#FEC1C5] text-white bg-[#310320] rounded">
+                        <button onClick={onClose} className="px-4 py-2 dark:bg-[#eeb2b6] text-white bg-[#310320] rounded">
                             Cancel
                         </button>
                         <button type='submit'
 
-                            className="px-4 py-2 bg-[#FEC1C5] dark:bg-[#310320] rounded text-white"
+                            className="px-4 py-2 bg-[#eeb2b6] dark:bg-[#310320] rounded text-white"
                         >
                             {initialData ? 'Update' : 'Create'}
                         </button>

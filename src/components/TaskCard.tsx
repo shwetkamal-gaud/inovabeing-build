@@ -4,7 +4,7 @@ import GlassCard from './GlassCard';
 import { Task } from '@/types/types';
 
 interface TaskCardProp {
-    id: number
+    _id: string
     title: string;
     status: string;
     createdAt: string;
@@ -13,7 +13,7 @@ interface TaskCardProp {
     setShowDelete: Dispatch<SetStateAction<boolean>>
 }
 
-const TaskCard = ({ id, title, status, createdAt, setTask, setShowForm, setShowDelete }: TaskCardProp) => {
+const TaskCard = ({ _id, title, status, createdAt, setTask, setShowForm, setShowDelete }: TaskCardProp) => {
     return (
         <GlassCard >
             <div className="flex justify-between items-center">
@@ -28,10 +28,10 @@ const TaskCard = ({ id, title, status, createdAt, setTask, setShowForm, setShowD
                     {status}
                 </div>
                 <div className='flex items-center gap-2'>
-                    <button onClick={() => { setShowForm(true); setTask({ id, title, status, createdAt }) }}>
+                    <button onClick={() => { setShowForm(true); setTask({ _id, title, status, createdAt }) }}>
                         <Edit />
                     </button>
-                    <button onClick={() => { setTask({ id, title, status, createdAt }); setShowDelete(true) }}>
+                    <button onClick={() => { setTask({ _id, title, status, createdAt }); setShowDelete(true) }}>
                         <Trash2 />
                     </button>
                 </div>

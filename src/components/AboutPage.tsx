@@ -32,7 +32,7 @@ successful projects on time and within budget.`
         },
     ]
     return (
-        <div className='mt-10  flex flex-grow h-full w-full px-5 overflow-y-auto scrollbar-none items-center justify-center flex-col dark:text-white'>
+        <div className='mt-10  flex flex-grow  w-full px-5  items-center justify-center flex-col dark:text-white'>
             <GlassCard className='max-w-7xl'>
                 <div className="flex    justify-center">
                     <div className="container flex flex-col md:flex-row items-center gap-10">

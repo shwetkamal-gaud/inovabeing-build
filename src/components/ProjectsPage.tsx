@@ -127,10 +127,9 @@ const ProjectsPage = () => {
     };
     
   return (
-      <div className='mt-10 px-3 flex flex-grow h-full w-full overflow-y-auto scrollbar-none items-center justify-center flex-col dark:text-white'>
-        <GlassCard>
+      <div className='mt-10 p-3 flex flex-grow w-full  items-center justify-center flex-col dark:text-white'>
            <ProjectCard data={ProjectData}/>
-        </GlassCard>
+    
       </div>
   )
 }

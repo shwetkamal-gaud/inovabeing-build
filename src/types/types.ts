@@ -27,7 +27,7 @@ export interface ProjectData {
 }
 
 export interface Task {
-    id: number
+    _id: string
     title: string,
     status: string,
     createdAt: string
